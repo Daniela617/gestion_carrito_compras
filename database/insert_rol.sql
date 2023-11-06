@@ -1,3 +1,5 @@
-
 INSERT INTO ROL (ID_ROL, NOMBRE_ROL)
 VALUES (1, 'Administrador');
+INSERT INTO ROL (ID_ROL, NOMBRE_ROL)
+VALUES (2, 'Comprador');
+
