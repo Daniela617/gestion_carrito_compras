@@ -1,5 +1,5 @@
 export default class RolEntity{
-    constructor(public rol_id:number, public rol_nombre:string)
+    constructor( ID_ROL: number, NOMBRE_ROL:string)
     {
     }
 }

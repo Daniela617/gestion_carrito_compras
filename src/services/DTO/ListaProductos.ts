@@ -3,12 +3,12 @@ import ProductoDTO from "./ProductoDTO";
 export default class ProcesoCompraDTO{
    
     private _idlista: number;
-    private _idproducto: ProductoDTO;
+    private _idproducto: ProductoDTO[];
     private _estado: string;
    
 
     
-    public constructor(  idList:number, idProducto:ProductoDTO,estado:string)
+    public constructor(  idList:number, idProducto:ProductoDTO[],estado:string)
     {
         this._idlista = idList;
         this._idproducto = idProducto;
@@ -26,12 +26,12 @@ export default class ProcesoCompraDTO{
     public set idLista(id:number){
         this._idlista = id;
     }
-    public get idProducto():ProductoDTO{
+    public get idProducto():ProductoDTO[]{
         return this._idproducto ;
     }
    
     
-    public set idProducto(id:ProductoDTO){
+    public set idProducto(id:ProductoDTO[]){
         this._idproducto = id;
     }
     public get estado():string{
