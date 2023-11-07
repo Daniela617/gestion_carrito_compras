@@ -2,7 +2,7 @@ import express,{ Application } from "express";
 import morgan from 'morgan';
 import cors from 'cors';
 
-import usuarioRolRoutes from "./src/routes/UsuarioRolRoutes";
+import usuarioRoutes from "./src/routes/UsuarioRoutes";
 import indexRoutes from "./src/routes/indexRoutes";
 import rolesRoutes from "./src/routes/RolesRoutes";
 
@@ -23,7 +23,7 @@ class Servidor{
     }
     routes():void{
         this.app.use(indexRoutes);
-        this.app.use('/api/usuarios',usuarioRolRoutes);     
+        this.app.use('/api/usuarios',usuarioRoutes);     
         this.app.use('/api/roles', rolesRoutes);  
 
 

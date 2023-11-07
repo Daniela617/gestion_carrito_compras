@@ -13,6 +13,6 @@ class UsuarioRolRoutes{
         
     }
 }
-const usuarioRolRoutes=new UsuarioRolRoutes();
-export default usuarioRolRoutes.router;
+const usuarioRoutes=new UsuarioRolRoutes();
+export default usuarioRoutes.router;
 
