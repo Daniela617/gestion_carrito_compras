@@ -3,7 +3,6 @@ import db from '../database/Database';
 import UsuarioEntity from '../models/UsuarioEntity';
 import { query } from 'express';
 
-//TODO: Implementar el uso de transacciones
 export default class GestionUsuarioRepository{
     public constructor()
     {
