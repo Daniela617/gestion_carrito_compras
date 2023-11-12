@@ -14,23 +14,7 @@ class GestionUsuariosImpl implements IGestionUsuarios{
         this.accesoPersistencia = new GestionUsuariosRepository();
         this.mapper = new UsuarioMapper();
     }
-    async crearUsuario(usuario: UsuarioDTO): Promise<UsuarioDTO> {
-        const usuarioDTO = this.mapper.jsonToDTO(usuario);
-        usuarioDTO.password = enc.hashPassword(usuarioDTO.password);
-        const usuarioEntity:UsuarioEntity[] = this.mapper.dtoToEntity(usuarioDTO);
-        const res = await this.accesoPersistencia.crearUsuarioRol(usuarioEntity);
-        return this.mapper.entityToDTO(res);     
-    }
-    async actualizarUsuario(id: number, usuario: UsuarioDTO): Promise<UsuarioDTO> {
-        const usuarioDTO = this.mapper.jsonToDTO(usuario);
-        const usuarioEntity:UsuarioEntity[]= this.mapper.dtoToEntity(usuarioDTO)
-        const res= await this.accesoPersistencia.actualizarUsuario(id,usuarioEntity);
-        return this.mapper.entityToDTO(res);
-        
-    }
-    async eliminarUsuario(id: number): Promise<boolean> {
-        return await this.accesoPersistencia.eliminarUsuario(id);
-    }
+    
     async consultarUsuarios(): Promise<UsuarioDTO[]> {
         const res= await this.accesoPersistencia.consultarUsuarios();
         return this.mapper.entitiesToDTOs(res);

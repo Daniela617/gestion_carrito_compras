@@ -9,43 +9,10 @@ class UsuarioController{
     {
         this.usuarioRolService = objImpl;
     }
-    public create = async (req:Request, res:Response)=>
-    {
-        const result = await this.usuarioRolService.crearUsuario(req.body);
-        
-        if(result.id != 0)
-        {
-            res.status(201).json(result);
-        }
-        else{
-            res.status(401).json(result);
-        }
-    }
-    public update =  async (req:Request, res:Response)=>
-    {
-        const {id} = req.params;
-        const user = req.body;
-        const result = await this.usuarioRolService.actualizarUsuario(parseInt(id), user);
-        if(result.id == user._id)
-        {
-            res.status(200).json(result);
-        }else{
-            res.status(401).json(result);
-        }
-    }
-    public delete = async (req:Request, res:Response)=>
-    {
-        const {id} = req.params
-        const result  =await this.usuarioRolService.eliminarUsuario(parseInt(id));
-        if(result)
-        {
-            res.status(200).json(result);
-        }else{
-            res.status(401).json(result);
-        }
-    }
+    
     public list = async (req:Request, res:Response)=>
     {
+        console.log("ing");
         const result = await this.usuarioRolService.consultarUsuarios();
         if(result.length >0)
         {
