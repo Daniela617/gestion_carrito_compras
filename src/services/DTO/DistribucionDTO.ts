@@ -1,5 +1,5 @@
 import ProductoDTO from './ProductoDTO';
-export default class ProcesoCompraDTO{
+export default class DistribucionDTO{
     private _idproveedor: number;
     private _idproducto: ProductoDTO[];
    
