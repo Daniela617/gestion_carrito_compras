@@ -2,7 +2,7 @@ import {Request, Response} from 'express';
 import IGestionProductsList from '../services/services/IGestionProductosList';
 import ListaProductosCmpDTO from '../services/DTO/ListaProductosCmpDTO';
 import gestionProductosListImpl from '../services/services/GestionListaProductosImpl';
-import ListaProductosDTO from '../services/DTO/ListaProductosDTO';
+import ListPrdDTO from '../services/DTO/ListPrdDTO';
 class ListProductsController
 {
     private productLService:IGestionProductsList;
@@ -13,7 +13,8 @@ class ListProductsController
 
     public create = async (req:Request, res:Response)=>
     {
-        const ls:ListaProductosDTO = req.body;
+        const ls:ListPrdDTO = req.body;
+        console.log(ls);
         const result = await this.productLService.crearListaProducto(ls);
         if(result.idLista != 0)
         {
@@ -38,7 +39,7 @@ class ListProductsController
     
     public delete = async (req:Request, res:Response) =>
     {
-        const ls:ListaProductosDTO = req.body;
+        const ls:ListPrdDTO = req.body;
         const result  =await this.productLService.eliminarListaProducto(ls);
         if(result)
         {

@@ -1,23 +1,33 @@
-import ProductsListEntity from "../../models/ProductsListEntity";
+import ListaProductosEntity from "../../models/ListaProductosEntity";
 import ListaProductosCmpDTO from "../DTO/ListaProductosCmpDTO";
 import ListaProductosCmpEntity from "../../models/ListaProductosCmpEntity";
-import ListaProductosDTO from "../DTO/ListaProductosDTO";
-
+import ListPrdDTO from "../DTO/ListPrdDTO";
 
 export default class ProductListMapper{
     public constructor(){
 
     }
-    public entityToDTO(objEntity:ProductsListEntity):ListaProductosDTO{
-        const dto:ListaProductosDTO=new ListaProductosDTO(objEntity.IDLISTA,objEntity.IDPRODUCTO,objEntity.ESTADO);
+    public entityToDTO(objEntity:ListaProductosEntity):ListPrdDTO{
+        const dto:ListPrdDTO=new ListPrdDTO(objEntity.IDLISTA,objEntity.IDPRODUCTO,objEntity.ESTADO);
         return dto;
     }
-    public dtoToEntity(objDTO:ListaProductosDTO): ProductsListEntity
+    public dtoToEntity(objDTO:ListPrdDTO):ListaProductosEntity
     {
-        const entity:ProductsListEntity=new ProductsListEntity(objDTO.idLista,objDTO.idProducto,objDTO.estado);
+        
+        const entity:ListaProductosEntity= new ListaProductosEntity(objDTO.idLista,objDTO.idPro,objDTO.nombre);
         return entity;
     }
-   
+    public jsonToDTO(json:any):ListPrdDTO
+    {   
+        
+        const ls = new ListPrdDTO(
+            parseInt(json._idlista),
+            parseInt(json._idproducto),
+            json._estado
+        );
+
+        return ls;
+    }
     public entitiesToDTOs(objEntity:ListaProductosCmpEntity[]): ListaProductosCmpDTO[]
     {
        const ls:ListaProductosCmpDTO[]=[];

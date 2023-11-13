@@ -27,11 +27,15 @@ export default class ListaComprasDTO{
     }
    
     public get idLista():number{
+        console.log("dto1",this._idlista);
+
         return this._idlista;
     }
    
     
     public set idLista(id:number){
+        console.log("dto",id);
+
         this._idlista = id;
     }
     

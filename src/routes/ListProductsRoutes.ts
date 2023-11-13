@@ -9,7 +9,7 @@ class ListProductsRoutes{
     private config():void
     {
         
-        this.router.post('/',listPrdController.create);
+        this.router.post('',listPrdController.create);
         this.router.get('/:id', listPrdController.listById);
         this.router.delete('/', listPrdController.delete);
      

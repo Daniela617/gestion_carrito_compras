@@ -10,13 +10,16 @@ export default class GestionComprasRepository
     }
 
     async crearCompra(idUser:number):Promise<ListaComprasEntity>{
-        const query="INSERT INTO LISTA_PRODUCTOS VALUES(?,CURDATE(),CONCAT('FACTURA_'(SELECT NOMBRE_USUARIO FROM USUARIO WHERE IDUSUARIO=?)))";
+        const query="INSERT INTO LISTA_COMPRAS (IDUSUARIO, FECHA_LISTA, NOMBRE_LISTA) VALUES (?, CURDATE(), CONCAT('LISTA_COMPRAS_', (SELECT NOMBRE_USUARIO FROM USUARIO WHERE IDUSUARIO=?)));";
+          
+        
         const query2="SELECT IDLISTA,IDUSUARIO,FECHA_LISTA,NOMBRE_LISTA FROM LISTA_COMPRAS WHERE IDLISTA=?;";
         const res:ListaComprasEntity= new ListaComprasEntity(0,0,new Date(),"");
         try{
-           const [result]:ListaComprasEntity|any  = await db.query(query,[idUser]);
+           const [result]:ListaComprasEntity|any  = await db.query(query,[idUser,idUser]);
+           console.log("",result);
            if(result.affectedRows===1){
-                const [result2]:ListaComprasEntity|any  = await db.query(query2,[result.id]);
+                const [result2]:ListaComprasEntity|any  = await db.query(query2,[result.insertId]);
                 if (result2.length > 0) {
                     console.log(result2[0]);
                         return result2[0]; 
@@ -31,8 +34,8 @@ export default class GestionComprasRepository
     }
     
     async eliminarCompra(idUser:number):Promise<boolean>{
-         const query="DELETE FROM LISTA_PRODUCTOS LP JOIN LISTA_COMPRAS LC ON LP.IDLISTA=LC.IDLISTA JOIN USUARIO U ON LC.IDUSUARIO=U.USUARIO WHERE U.USUARIO=?  ";
-         const query2="DELETE FROM LISTA_COMPRAS LC JOIN USUARIO U ON LC.IDUSUARIO=U.USUARIO WHERE U.USUARIO=?";   
+         const query="DELETE LP FROM LISTA_PRODUCTO LP INNER JOIN LISTA_COMPRAS LC ON LP.IDLISTA = LC.IDLISTA INNER JOIN USUARIO U ON LC.IDUSUARIO = U.IDUSUARIO WHERE U.IDUSUARIO = ?; ";
+         const query2="DELETE LC FROM LISTA_COMPRAS LC JOIN USUARIO U ON LC.IDUSUARIO=U.IDUSUARIO WHERE U.IDUSUARIO=?";   
          try{
             await db.query(query,[idUser]);
             const [res]:ResultSetHeader|any = await db.query(query2,[idUser]);

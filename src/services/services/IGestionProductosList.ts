@@ -1,11 +1,11 @@
-import ListaProductosDTO from "../DTO/ListaProductosDTO";
 import ListaProductosCmpDTO from "../DTO/ListaProductosCmpDTO";
+import ListPrdDTO from "../DTO/ListPrdDTO";
 export default interface IGestionProductsList{
 
-    crearListaProducto(listPrd:ListaProductosDTO):Promise<ListaProductosDTO>;
+    crearListaProducto(listPrd:ListPrdDTO):Promise<ListPrdDTO>;
 
     
-    eliminarListaProducto(listPrd:ListaProductosDTO):Promise<boolean>;
+    eliminarListaProducto(listPrd:ListPrdDTO):Promise<boolean>;
     //TO DO:RETORNO
     consultarListaProductos(idUser:number):Promise<ListaProductosCmpDTO[]>;
 }
