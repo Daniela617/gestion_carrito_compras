@@ -9,10 +9,11 @@ class UsuarioRolRoutes{
     }
     private config():void
     {
-
-        this.router.get('/',usuarioController.list);
+        
+        this.router.get('/log/', usuarioController.listByLogin);
         this.router.get('/:id', usuarioController.listById);
-        this.router.get('/login/', usuarioController.listByLogin);
+        this.router.get('/',usuarioController.list);
+        
      
     }
 }

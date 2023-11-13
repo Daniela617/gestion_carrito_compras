@@ -20,12 +20,17 @@ class GestionUsuariosImpl implements IGestionUsuarios{
         return this.mapper.entitiesToDTOs(res);
     }
     async consultarUsuarioPorId(id: number): Promise<UsuarioDTO> {
+        console.log("Impl id",id);
         const res = await this.accesoPersistencia.consultarUsuarioPorId(id);
         return this.mapper.entityToDTO(res);
     }
     
     async consultarUsuarioLogin(user: CredencialesDTO): Promise<UsuarioDTO> {
-        let entity= this.mapper.dtoToEntityC(user);
+        console.log("h",user);
+        const dto=this.mapper.jsonToDTOCr(user);
+        console.log(dto.login,dto.password);
+        
+        let entity= this.mapper.dtoToEntityC(dto);
         const res = await this.accesoPersistencia.consultarUsuarioLogin(entity);
         return this.mapper.entityToDTO(res);
     }

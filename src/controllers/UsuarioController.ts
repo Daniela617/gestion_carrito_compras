@@ -7,12 +7,12 @@ class UsuarioController{
     private usuarioRolService:IGestionUsuarios;
     public constructor(objImpl: IGestionUsuarios)
     {
+        console.log("s");
         this.usuarioRolService = objImpl;
     }
     
     public list = async (req:Request, res:Response)=>
     {
-        console.log("ing");
         const result = await this.usuarioRolService.consultarUsuarios();
         if(result.length >0)
         {
@@ -25,7 +25,7 @@ class UsuarioController{
     public listById = async (req:Request, res:Response)=>
     {
         const {id} =  req.params
-        console.log(id)
+        console.log("ho",id)
         const result = await this.usuarioRolService.consultarUsuarioPorId(parseInt(id));
         if(result.id == parseInt(id))
         {
@@ -38,7 +38,9 @@ class UsuarioController{
     
     public listByLogin = async (req:Request, res:Response) =>
     {
+        console.log("gola")
         const credencial:CredencialesDTO=req.body;
+        console.log("crede",credencial);
         const result = await this.usuarioRolService.consultarUsuarioLogin(credencial);
         if(result.id != 0)
         {

@@ -77,4 +77,14 @@ export default class UsuarioMapper{
         const entity:CredencialesEntity= new CredencialesEntity(objDTO.password,objDTO.login);
         return entity;
     }
+    public jsonToDTOCr(json:any):CredencialesDTO
+    {   
+        
+        const usuario = new CredencialesDTO(
+            json._clave,
+            json._username
+        );
+
+        return usuario;
+    }
 }
