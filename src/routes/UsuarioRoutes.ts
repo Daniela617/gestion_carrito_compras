@@ -12,7 +12,7 @@ class UsuarioRolRoutes{
 
         this.router.get('/',usuarioController.list);
         this.router.get('/:id', usuarioController.listById);
-        this.router.get('/login/:login', usuarioController.listByLogin);
+        this.router.get('/login/', usuarioController.listByLogin);
      
     }
 }

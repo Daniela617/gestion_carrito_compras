@@ -6,7 +6,7 @@ import usuarioRoutes from "./src/routes/UsuarioRoutes";
 import indexRoutes from "./src/routes/indexRoutes";
 import rolesRoutes from "./src/routes/RolesRoutes";
 import productoRoutes from "./src/routes/ProductsRoutes"
-
+import lProductsRoutes from "./src/routes/ListProductsRoutes";
 class Servidor{
     public app: Application;
     constructor(){
@@ -26,7 +26,7 @@ class Servidor{
         this.app.use('/api/usuarios',usuarioRoutes);     
         this.app.use('/api/roles', rolesRoutes);  
         this.app.use('/api/productos', productoRoutes);  
-
+        this.app.use('/api/productosList', lProductsRoutes);  
 
     }
     start():void{

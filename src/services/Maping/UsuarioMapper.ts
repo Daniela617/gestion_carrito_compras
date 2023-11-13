@@ -1,6 +1,11 @@
 import UsuarioDTO from "../DTO/UsuarioDTO";
 import RolDTO from "../DTO/RolDTO";
 import UsuarioEntity from "../../models/UsuarioEntity";
+
+
+//
+import CredencialesDTO from "../DTO/CredencialesDTO";
+import CredencialesEntity from "../../models/credencialesEntity";
 export default class UsuarioMapper{
     public constructor(){
 
@@ -60,5 +65,16 @@ export default class UsuarioMapper{
             }
         })
         return usuarios;
+    }
+
+    //
+    public entityToDTOC(objEntity:CredencialesEntity):CredencialesDTO{
+       const dtoC:CredencialesDTO=new CredencialesDTO(objEntity.CLAVE,objEntity.USERNAME);
+       return dtoC;
+    }
+    public dtoToEntityC(objDTO:CredencialesDTO): CredencialesEntity
+    {
+        const entity:CredencialesEntity= new CredencialesEntity(objDTO.password,objDTO.login);
+        return entity;
     }
 }

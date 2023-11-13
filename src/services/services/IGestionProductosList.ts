@@ -1,11 +1,11 @@
-import ProductsListEntity from "../../models/ProductsListEntity";
-import ListaProductosCmp from "../../models/ListaProductosCmp";
-export interface IGestionProductsList{
+import ListaProductosDTO from "../DTO/ListaProductosDTO";
+import ListaProductosCmpDTO from "../DTO/ListaProductosCmpDTO";
+export default interface IGestionProductsList{
 
-    crearListaProducto(listPrd:ProductsListEntity):Promise<ProductsListEntity>;
+    crearListaProducto(listPrd:ListaProductosDTO):Promise<ListaProductosDTO>;
 
     
-    eliminarListaProducto(listPrd:ProductsListEntity):Promise<boolean>;
+    eliminarListaProducto(listPrd:ListaProductosDTO):Promise<boolean>;
     //TO DO:RETORNO
-    consultarListaProductos(idLista:number):Promise<ListaProductosCmp[]>;
+    consultarListaProductos(idUser:number):Promise<ListaProductosCmpDTO[]>;
 }

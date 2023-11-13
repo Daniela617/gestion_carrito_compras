@@ -2,7 +2,7 @@ import {Request, Response} from 'express';
 import IGestionUsuarios from '../services/services/IGestionUsuarios';
 import UsuarioDTO from '../services/DTO/UsuarioDTO';
 import gestionUsuariosImpl from '../services/services/GestionUsuariosImpl';
-
+import CredencialesDTO from '../services/DTO/CredencialesDTO';
 class UsuarioController{
     private usuarioRolService:IGestionUsuarios;
     public constructor(objImpl: IGestionUsuarios)
@@ -38,9 +38,9 @@ class UsuarioController{
     
     public listByLogin = async (req:Request, res:Response) =>
     {
-        const {login} =  req.params
-        const result = await this.usuarioRolService.consultarUsuariosPorLogin(login);
-        if(result.login == login)
+        const credencial:CredencialesDTO=req.body;
+        const result = await this.usuarioRolService.consultarUsuarioLogin(credencial);
+        if(result.id != 0)
         {
             res.status(200).json(result);
         }else{

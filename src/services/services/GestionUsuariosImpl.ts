@@ -2,7 +2,7 @@ import UsuarioEntity from '../../models/UsuarioEntity';
 import GestionUsuariosRepository from '../../repositories/GestionUsuariosRepository';
 import UsuarioDTO from '../DTO/UsuarioDTO';
 import UsuarioMapper from '../Maping/UsuarioMapper';
-
+import CredencialesDTO from '../DTO/CredencialesDTO';
 import enc from '../Utiles/Encriptar';
 
 import IGestionUsuarios from './IGestionUsuarios';
@@ -24,8 +24,9 @@ class GestionUsuariosImpl implements IGestionUsuarios{
         return this.mapper.entityToDTO(res);
     }
     
-    async consultarUsuariosPorLogin(login: string): Promise<UsuarioDTO> {
-        const res = await this.accesoPersistencia.consultarUsuariosPorLogin(login);
+    async consultarUsuarioLogin(user: CredencialesDTO): Promise<UsuarioDTO> {
+        let entity= this.mapper.dtoToEntityC(user);
+        const res = await this.accesoPersistencia.consultarUsuarioLogin(entity);
         return this.mapper.entityToDTO(res);
     }
 }

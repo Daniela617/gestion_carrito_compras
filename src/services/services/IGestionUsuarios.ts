@@ -1,4 +1,5 @@
 import UsuarioDTO from '../DTO/UsuarioDTO';
+import CredencialesDTO from '../DTO/CredencialesDTO';
 export default interface IGestionUsuarios
 {
    
@@ -12,7 +13,6 @@ export default interface IGestionUsuarios
     
     /**
      * Obtiene usuarios por login
-     * @router GET /api/usuarios/login/{login}
      */
-    consultarUsuariosPorLogin(login:string):Promise<UsuarioDTO>;
+    consultarUsuarioLogin(user:CredencialesDTO):Promise<UsuarioDTO>;
 }

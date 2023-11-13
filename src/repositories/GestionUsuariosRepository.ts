@@ -2,6 +2,7 @@ import { ResultSetHeader, RowDataPacket } from 'mysql2';
 import db from '../database/Database';
 import UsuarioEntity from '../models/UsuarioEntity';
 import { query } from 'express';
+import CredencialesEntity from '../models/credencialesEntity';
 
 export default class GestionUsuarioRepository{
     public constructor()
@@ -39,11 +40,13 @@ export default class GestionUsuarioRepository{
         return res;
     }
     
-    async consultarUsuariosPorLogin(login: string): Promise<UsuarioEntity[]> {
-        const query3 = "SELECT  IDUSUARIO,ID_ROL ,  NOMBRE_USUARIO , CLAVE ,USERNAME FROM USUARIO WHERE USERNAME=?";
+    async consultarUsuarioLogin(user: CredencialesEntity): Promise<UsuarioEntity[]> {
+        const query3 = "SELECT  IDUSUARIO,ID_ROL ,  NOMBRE_USUARIO , CLAVE ,USERNAME FROM USUARIO WHERE USERNAME=? AND CLAVE=?";
+        const usuario:UsuarioEntity= new UsuarioEntity(0,0,"","","");
+        const crede:CredencialesEntity= new CredencialesEntity(user.CLAVE,user.USERNAME);
         const res:UsuarioEntity[] = []
         try{
-            const [result]:UsuarioEntity|any  = await db.query(query3, [login]);
+            const [result]:UsuarioEntity|any  = await db.query(query3, [crede.USERNAME,crede.CLAVE]);
             result.map((row:UsuarioEntity)=>{
                 res.push(row);})
         }catch(error)

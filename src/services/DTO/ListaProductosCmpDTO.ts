@@ -1,4 +1,4 @@
-export default class ProductoDTO{
+export default class ListaProductosCmpDTO{
     private _nombreproducto: string;
     private _precio: number;
 
