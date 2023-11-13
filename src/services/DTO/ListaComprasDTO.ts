@@ -6,7 +6,7 @@ export default class ListaComprasDTO{
    
 
     
-    public constructor(idU:number,  idList:number,fechaLista:Date,nombreList:string)
+    public constructor(  idList:number,idU:number,fechaLista:Date,nombreList:string)
     {
         this._idusuario = idU;
         this._idlista = idList;

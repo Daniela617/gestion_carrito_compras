@@ -7,6 +7,7 @@ import indexRoutes from "./src/routes/indexRoutes";
 import rolesRoutes from "./src/routes/RolesRoutes";
 import productoRoutes from "./src/routes/ProductsRoutes"
 import lProductsRoutes from "./src/routes/ListProductsRoutes";
+import comprasRoutes from "./src/routes/comprasRoutes";
 class Servidor{
     public app: Application;
     constructor(){
@@ -27,6 +28,8 @@ class Servidor{
         this.app.use('/api/roles', rolesRoutes);  
         this.app.use('/api/productos', productoRoutes);  
         this.app.use('/api/productosList', lProductsRoutes);  
+        this.app.use('/api/compras', comprasRoutes);  
+
 
     }
     start():void{

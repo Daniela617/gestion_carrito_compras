@@ -3,8 +3,8 @@ import ListaProductosCmpEntity from "../../models/ListaProductosCmpEntity";
 import ProductListMapper from "../Maping/ProductListMapper";
 import ListaProductosDTO from "../DTO/ListaProductosDTO";
 import ProductsListEntity from "../../models/ProductsListEntity";
-import { IGestionProductsList } from "./IGestionProductosList";
 import GestionListProductsRepository from "../../repositories/GestionListProductsRepository";
+import IGestionProductsList from "./IGestionProductosList";
 class GestionProductosListImpl implements IGestionProductsList{
     private accesoPersistencia:GestionListProductsRepository;
     private mapper:ProductListMapper;
