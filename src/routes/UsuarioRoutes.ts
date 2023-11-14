@@ -10,7 +10,7 @@ class UsuarioRolRoutes{
     private config():void
     {
         
-        this.router.get('/log/', usuarioController.listByLogin);
+        this.router.post('', usuarioController.listByLogin);
         this.router.get('/:id', usuarioController.listById);
         this.router.get('/',usuarioController.list);
         
