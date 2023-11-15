@@ -8,13 +8,13 @@ export default class ProductListMapper{
 
     }
     public entityToDTO(objEntity:ListaProductosEntity):ListPrdDTO{
-        const dto:ListPrdDTO=new ListPrdDTO(objEntity.IDLISTA,objEntity.IDPRODUCTO,objEntity.ESTADO);
+        const dto:ListPrdDTO=new ListPrdDTO(objEntity.IDLISTA,objEntity.IDPRODUCTO,objEntity.ESTADO,objEntity.CANTIDAD);
         return dto;
     }
     public dtoToEntity(objDTO:ListPrdDTO):ListaProductosEntity
     {
         
-        const entity:ListaProductosEntity= new ListaProductosEntity(objDTO.idLista,objDTO.idPro,objDTO.nombre);
+        const entity:ListaProductosEntity= new ListaProductosEntity(objDTO.idLista,objDTO.idPro,objDTO.nombre,objDTO.cant);
         return entity;
     }
     public jsonToDTO(json:any):ListPrdDTO
@@ -23,7 +23,8 @@ export default class ProductListMapper{
         const ls = new ListPrdDTO(
             parseInt(json._idlista),
             parseInt(json._idproducto),
-            json._estado
+            json._estado,
+            parseInt(json._cantidad)
         );
 
         return ls;
@@ -34,7 +35,7 @@ export default class ProductListMapper{
 
         objEntity.forEach((row)=>
         {
-            ls.push(new ListaProductosCmpDTO(row.NOMBRE_PRODUCTO,row.PRECIO));
+            ls.push(new ListaProductosCmpDTO(row.NOMBRE_PRODUCTO,row.PRECIO,row.CANTIDAD));
         }
         )
        return ls;
@@ -42,12 +43,12 @@ export default class ProductListMapper{
     
     //
     public entityToDTOC(objEntity:ListaProductosCmpEntity):ListaProductosCmpDTO{
-       const dtoC:ListaProductosCmpDTO=new ListaProductosCmpDTO(objEntity.NOMBRE_PRODUCTO,objEntity.PRECIO);
+       const dtoC:ListaProductosCmpDTO=new ListaProductosCmpDTO(objEntity.NOMBRE_PRODUCTO,objEntity.PRECIO,objEntity.CANTIDAD);
        return dtoC;
     }
     public dtoToEntityC(objDTO:ListaProductosCmpDTO): ListaProductosCmpEntity
     {
-        const entity:ListaProductosCmpEntity=new ListaProductosCmpEntity(objDTO.nombre,objDTO.precio);
+        const entity:ListaProductosCmpEntity=new ListaProductosCmpEntity(objDTO.nombre,objDTO.precio,objDTO.cant);
         return entity;
     }
     

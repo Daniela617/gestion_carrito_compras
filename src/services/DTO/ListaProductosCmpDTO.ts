@@ -1,12 +1,14 @@
 export default class ListaProductosCmpDTO{
     private _nombreproducto: string;
     private _precio: number;
+    private _cantidad: number;
 
     
-    public constructor( nombre:string,  precio:number)
+    public constructor( nombre:string,  precio:number, cantidad:number)
     {
         this._nombreproducto = nombre;
         this._precio = precio;
+        this._cantidad= cantidad;
     }
    
     public get nombre():string{
@@ -27,6 +29,16 @@ export default class ListaProductosCmpDTO{
     
     public set precio(precio:number){
         this._precio = precio;
+    }
+    public get cant():number{
+        return this._cantidad;
+    }
+    
+    
+   
+    
+    public set cant(cant:number){
+        this._cantidad = cant;
     }
     
 
