@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2023 a las 05:28:15
+-- Tiempo de generación: 15-11-2023 a las 03:54:24
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -66,19 +66,20 @@ INSERT INTO `lista_compras` (`IDLISTA`, `IDUSUARIO`, `FECHA_LISTA`, `NOMBRE_LIST
 CREATE TABLE `lista_producto` (
   `IDLISTA` int(11) NOT NULL,
   `IDPRODUCTO` int(11) NOT NULL,
-  `ESTADO` varchar(10) NOT NULL
+  `ESTADO` varchar(10) NOT NULL,
+  `Cantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `lista_producto`
 --
 
-INSERT INTO `lista_producto` (`IDLISTA`, `IDPRODUCTO`, `ESTADO`) VALUES
-(1, 1, 'Recibido'),
-(1, 2, 'Recibido'),
-(1, 3, 'Recibido'),
-(1, 4, 'Recibido'),
-(1, 5, 'Recibido');
+INSERT INTO `lista_producto` (`IDLISTA`, `IDPRODUCTO`, `ESTADO`, `Cantidad`) VALUES
+(1, 1, 'Recibido', 3),
+(1, 2, 'Recibido', 1),
+(1, 3, 'Recibido', 1),
+(1, 5, 'Recibido', 1),
+(6, 4, 'Recibido', 2);
 
 -- --------------------------------------------------------
 
